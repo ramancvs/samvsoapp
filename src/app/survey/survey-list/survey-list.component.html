@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <div class="text-right">
+        <button (click)="createSurvey();" class="btn btn-primary">Create New Survey</button>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                    <div class="table-overflow">
+                        <table class="table table-lg table-hover" datatable [dtOptions]="dtOptions">
+                            <thead>
+                                <tr>
+                                    <th>Brand</th>
+                                    <th>PBL Site Number</th>
+                                    <th>Site Address</th>
+                                    <th>Site City</th>
+                                    <th>Site State</th>
+                                    <th>Site Zipcode</th>
+                                    <th>Survey Date</th>
+                                    <th *ngIf="user.can_approve">Status</th>
+                                    <th *ngIf="!user.can_approve">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let list of surveyList">
+                                    <td>{{list.Brand}}</td>
+                                    <td>{{list.PBLSiteNumber}}</td>
+                                    <td>{{list.SiteAddress}}</td>
+                                    <td>{{list.SiteCity}}</td>
+                                    <td>{{list.SiteState}}</td>
+                                    <td>{{list.SiteZipcode}}</td>
+                                    <td>{{list.SurveyDate}}</td>
+                                    <td *ngIf="user.can_approve">
+                                        <button [disabled]="list.ApprovedStatus === 'True'" class="btn btn-success btn-md" href="javascript:void(0)" (click)="approveSurvey(list.Id, user.brand_name)">
+                                            <i class="ti-comment pdd-right-5"></i>
+                                            <span *ngIf="list.ApprovedStatus === 'True'">Approved</span>
+                                            <span *ngIf="list.ApprovedStatus === 'False'">Approve Survey</span>
+                                        </button>
+                                    </td>
+                                    <td *ngIf="!user.can_approve"> 
+                                        <a class="btn btn-success btn-sm" *ngIf="list.ApprovedStatus === 'True'" href="javascript://void(0)">Approved</a>
+                                        <a class="btn btn-info btn-sm" *ngIf="list.ApprovedStatus === 'False'" href="javascript://void(0)">Pending&nbsp;</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<button data-toggle="modal" data-target="#default-modal" class="btn btn-sm btn-primary" id="openModal" [hidden]="true"></button>
+
+<div class="modal fade" id="default-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>App Messages</h4>
+            </div>
+            <div class="modal-body">
+                <p>Data Saved Successfully!</p>
+            </div>
+            <div class="modal-footer no-border">
+                <div class="text-right">
+                    <button class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary btn-sm" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

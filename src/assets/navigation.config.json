@@ -1,0 +1,32 @@
+[
+    {
+        "name": "SAM",
+        "label": "SAM",
+        "icon": "icon-sam",
+        "link": "sam"
+    },
+    {
+        "name": "MID Builder",
+        "label": "MID Builder",
+        "icon": "icon-mid-bulder",
+        "link": "MID"
+    },
+    {
+        "name": "Flow App",
+        "label": "Flow App",
+        "icon": "icon-flowapp",
+        "link": "flowapp"
+    },
+    {
+        "name": "Ecommerce",
+        "label": "E commerce",
+        "icon": "icon-ecommerce",
+        "link": "ecommerce"
+    },
+    {
+        "name": "Admin",
+        "label": "Admin",
+        "icon": "icon-admin",
+        "link": "admin"
+    }
+]
